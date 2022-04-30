@@ -1,3 +1,4 @@
+#Работу выполнили Лысенко М. - 80%, Скороходов М. - 35%
 import turtle
 import math
 t = turtle.Turtle()

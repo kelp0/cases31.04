@@ -141,7 +141,7 @@ def dragon(n, size): #Дракон Хартера-Хейтуэя
         t.left(45)
 
 def tree(size,a): #Двоичное дерево
-    if size<20:
+    if size<30:
         return
     else:
         t.forward(size)

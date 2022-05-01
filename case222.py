@@ -1,7 +1,7 @@
 import os
 path = os.getcwd()
 def main():
-    print(path)
+    print(os.getcwd())
     print('1. Просмотр каталога ')
     print('2. На уровень вверх ')
     print('3. На уровень вниз ')
@@ -9,7 +9,14 @@ def main():
     print('5. Размер текущего каталога (в байтах) ')
     print('6. Поиск файла ')
     print('7. Выход из программы ')
-    print(acceptCommand())
+    num = acceptCommand()
+    if num == 2:
+        moveUp()
+        return main()
+    elif num == 3:
+        currentDir = os.getcwd()
+        moveDown(currentDir)
+        return main()
     
 
 def acceptCommand():
@@ -25,6 +32,14 @@ def acceptCommand():
         return acceptCommand()
 
 def moveUp():
-    os.chdir(os.getcwd()[:os.getcwd().rfind("\\")])
-moveUp()
-print(os.getcwd())
+    a = os.getcwd().rfind("\\")
+    os.chdir(os.getcwd()[:a])
+
+def moveDown(currentDir):
+    currentDir = input('Введите имя каталога, в который желаете перейти: ')
+    try:
+        os.chdir(str(os.getcwd())+'\\'+currentDir)
+    except FileNotFoundError:
+        print('Указанного вами каталога не существует. Повторите попытку. ')
+        return moveDown(currentDir)
+main()
